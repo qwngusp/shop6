@@ -4,6 +4,7 @@
 const Logger = (() => {
   const ENDPOINT = 'https://script.google.com/macros/s/AKfycbyww_xHvcUgXpa3viioEJFO7EZ-h2YkdCiUsPrMxYfaejdTIDlOnNlbRYfmnbTnS5w/exec';
 
+  
   const send = async (type, payload) => {
     try {
       await fetch(ENDPOINT, {
