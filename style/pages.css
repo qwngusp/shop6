@@ -273,15 +273,63 @@
 .product-row__original { font-size: 11px; color: var(--text-muted); text-decoration: line-through; }
 .product-row__per-unit { font-size: 13px; }
 .product-row__shipping {
-  font-size: 11px;
+  font-size: 13px;
   /* color: var(--text-secondary); */
 }
 .product-row__shipping strong {
   font-weight: 800;
   color: var(--text-primary);
 }
-.product-row__footer { margin-top: 4px; }
+.product-row__footer { margin-top: 8px; }
 .product-row__rating { margin-top: 3px; display: flex; align-items: center; gap: 2px; }
+
+/* ── 배송비 인라인 토글 ── */
+.product-row__shipping-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  /* background: var(--bg-gray); */
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.product-row__shipping-toggle:active {
+  background: var(--border);
+}
+.product-row__shipping-chevron {
+  font-size: 15px;
+  display: inline-block;
+  transition: transform 0.2s ease;
+  color: var(--text-muted);
+}
+.product-row__shipping-detail {
+  margin-top: 6px;
+  padding: 8px 10px;
+  /* background: var(--bg-gray); */
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  /* border-left: 3px solid var(--accent); */
+  animation: fadeIn 0.15s ease;
+}
+.product-row__shipping-fee {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 3px;
+}
+.product-row__shipping-addr {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.product-row__shipping-addr strong {
+  color: var(--text-secondary);
+  font-weight: 700;
+}
 
 /* ── 쿠폰 카드 (바텀시트 내) ── */
 .coupon-card {
@@ -416,11 +464,11 @@
 }
 
 .detail-delivery-addr {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .detail-delivery-note {
-  font-size: 12px;
+  font-size: 14px;
   /* color: var(--text-secondary); */
 }
 
@@ -477,7 +525,7 @@
 .detail-delivery-toggle {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 20px;
   padding: 14px var(--space-md);
   cursor: pointer;
   user-select: none;
@@ -490,8 +538,8 @@
   gap: 6px;
 }
 .detail-delivery-type-text {
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 14px;
+  /* font-weight: 600; */
   color: var(--text-primary);
 }
 .delivery-toggle-icon {
@@ -515,7 +563,8 @@
   justify-content: center;
   border-radius: var(--radius-full);
   align-self: flex-start;
-  margin-top: 2px;
+  margin-top: 0;
+  margin-left: auto;
 }
 .cart-item__delete:active { background: var(--bg-gray); }
 
@@ -1033,24 +1082,11 @@
   margin-bottom: 4px;
 }
 
-.detail-name-row {
-  display: flex;
-  align-items: flex-end;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
 .detail-name {
   font-size: 17px;
   font-weight: 700;
   line-height: 1.4;
-}
-
-.detail-per-unit {
-  font-size: 12px;
-  /* color: var(--text-muted); */
-  white-space: nowrap;
-  padding-bottom: 3px;
+  margin-bottom: 10px;
 }
 
 .detail-rating-row {
@@ -1064,6 +1100,21 @@
 .detail-rating-row .stars { font-size: 13px; }
 
 .detail-review-count {  }
+
+.detail-per-unit {
+  font-size: 16px;
+  /* color: var(--text-muted); */
+  white-space: nowrap;
+  align-self: flex-end;
+  padding-bottom: 3px;
+  margin-bottom: 10px;
+}
+
+.detail-name-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
 
 .detail-price-wrap { margin-bottom: 8px; }
 
@@ -1101,7 +1152,8 @@
 .detail-coupon-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 55px;
   padding: 14px var(--space-md);
 }
 
@@ -1111,9 +1163,9 @@
 }
 
 .detail-coupon-btn {
-  font-size: 13px;
-  color: var(--accent);
-  font-weight: 600;
+  font-size: 14px;
+  /* color: var(--accent); */
+  /* font-weight: 600; */
 }
 
 .detail-section {
@@ -1334,6 +1386,7 @@
 .cart-item {
   display: flex;
   gap: var(--space-md);
+  align-items: flex-start;
 }
 
 .cart-item__img-wrap {

@@ -23,7 +23,6 @@ const ListPage = (() => {
         </button>
       </div>
 
-      
       <!-- 카테고리 탭 -->
       <div class="list-cat-tabs" id="list-cat-tabs">
         ${CATEGORIES.map(c => `
@@ -31,10 +30,10 @@ const ListPage = (() => {
         `).join('')}
       </div>
 
-      <!-- 인기상품 레이블 -->
+      <!-- 검색결과 -->
       <div class="list-label-row">
-        <span class="list-label">인기 상품</span>
-        <span class="list-total">총 <strong>${products.length || 20}개</strong></span>
+        <span class="list-label">검색 결과</span>
+        <span class="list-total">총 <strong>${products.length || 6}개</strong></span>
       </div>
 
       <!-- 상품 리스트 -->
@@ -75,6 +74,19 @@ const ListPage = (() => {
         Router.navigate('detail', { id });
       });
     });
+
+    // 배송비 토글 — 클릭 이벤트가 product-row까지 올라가지 않도록 막음
+    list.querySelectorAll('.product-row__shipping-toggle').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = btn.dataset.id;
+        const detail = document.getElementById(`shipping-detail-${id}`);
+        const chevron = document.getElementById(`chevron-${id}`);
+        const isOpen = detail.style.display !== 'none';
+        detail.style.display = isOpen ? 'none' : 'block';
+        chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+      });
+    });
   };
 
   const bindCategoryTabs = () => {
@@ -94,26 +106,26 @@ const ListPage = (() => {
       <div class="product-row__img">
         <img src="${p.image}" alt="${p.name}"
           onerror="this.parentNode.style.background='#f0f0f0';this.style.display='none';" />
-        ${p.discountRate >= 40 ? `<span class="product-row__badge">최저가</span>` : ''}
+        ${p.discountRate >= 50 ? `<span class="product-row__badge">최저가</span>` : ''}
       </div>
       <div class="product-row__info">
-        <p class="product-row__name_capacity">${p.name} ${p.capacity}</p>
+        <p class="product-row__name_capacity">[브랜드${p.brand}] ${p.name} ${p.capacity}</p>
 
+        <p class="product-row__original">${p.originalPrice.toLocaleString()}원</p>
         <div class="product-row__price-row">
           <span class="product-row__discount">${p.discountRate}%</span>
           <span class="product-row__price">${p.discountedPrice.toLocaleString()}원</span>
-          </div>
-        <p class="product-row__original">${p.originalPrice.toLocaleString()}원</p>
-        
-
-        <div class="product-row__footer">
-          
         </div>
 
-        <div class="product-row__rating">
-          <span style="color:var(--star);font-size:11px;">★</span>
-          <span style="font-size:11px;font-weight:700;">${p.rating}</span>
-          <span style="font-size:11px;color:#999;">(${p.reviewCount.toLocaleString()})</span>
+        <div class="product-row__footer">
+          <button class="product-row__shipping-toggle" data-id="${p.id}">
+            <span class="product-row__shipping-text">🔽 배송 상세 정보  </span>
+            <!--<span class="product-row__shipping-chevron" id="chevron-${p.id}">▾</span>-->
+          </button>
+        </div>
+
+        <div class="product-row__shipping-detail" id="shipping-detail-${p.id}" style="display:none;">
+          <p class="product-row__shipping-fee">${p.shipping}</p>
         </div>
       </div>
     </div>
