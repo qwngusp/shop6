@@ -273,16 +273,206 @@
 .product-row__original { font-size: 11px; color: var(--text-muted); text-decoration: line-through; }
 .product-row__per-unit { font-size: 13px; }
 .product-row__shipping {
-  font-size: 15px;
-  padding: 10px;
-  /* color: var(--text-secondary); */
-}
-.product-row__shipping strong {
-  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 400;
   color: var(--text-primary);
+  background: #fff;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 2px 7px;
+  width: fit-content;
 }
-.product-row__footer { margin-top: 4px; }
-.product-row__rating { margin-top: 3px; display: flex; align-items: center; gap: 2px; }
+.shipping-box-icon {
+  font-size: 14px;
+  /* line-height: 1; */
+}
+/* 세로 구분선 */
+.product-row__col-divider {
+  width: 1px;
+  background: var(--border);
+  align-self: stretch;
+  margin: 4px 0;
+  flex-shrink: 0;
+}
+
+/* 3번째 열 - 쿠폰 다운 버튼 */
+.product-row__coupon-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 30px;
+  padding-left: 0;
+}
+
+.list-coupon-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-primary);
+  background: #fff;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 2px 7px;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+}
+
+.list-coupon-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 4px 6px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.list-coupon-btn:active {
+  opacity: 0.75;
+  transform: scale(0.95);
+}
+
+.list-coupon-btn__label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.list-coupon-btn__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1.5px solid var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1;
+  box-shadow: none;
+}
+
+.list-coupon-applied-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a8c4e;
+  background: #e8f7ef;
+  border: 1px solid #a8dfc0;
+  border-radius: var(--radius-sm);
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+/* ── 리스트 쿠폰 영역 ── */
+.product-row__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+/* ── 배송 정보 토글 ── */
+.product-row__shipping-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.product-row__shipping-box {
+  display: inline-flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 3px 7px;
+  width: fit-content;      /* 추가 */
+  align-self: flex-start;  /* 추가 */
+}
+
+/* 1단계 토글 버튼 */
+.product-row__shipping-toggle {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-primary);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: var(--transition);
+}
+
+.product-row__shipping-toggle:active { opacity: 0.7; }
+
+/* 펼쳐지는 내용 - 들여쓰기 */
+.product-row__shipping-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-left: 20px;
+  padding-top: 4px;
+  padding-bottom: 2px;
+}
+
+/* 2단계 서브 토글 */
+.product-row__shipping-toggle--sub {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  /* color: var(--text-secondary); */
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: var(--transition);
+}
+
+.product-row__shipping-toggle--sub:active { opacity: 0.7; }
+
+.product-row__shipping-final {
+  padding-left: 12px;
+}
+
+/* 박스 내부의 배송비 텍스트 */
+.product-row__shipping-box .product-row__shipping {
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  font-size: 14px;
+  background: transparent;
+}
+
+/* 내용확인하기 버튼 */
+.product-row__shipping-btn {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary);
+  background: transparent;
+  border: 1.5px solid var(--primary);
+  border-radius: var(--radius-full);
+  padding: 2px 10px;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 2px;
+}
+
+.product-row__shipping-btn:active { opacity: 0.8; }
 
 /* ── 쿠폰 카드 (바텀시트 내) ── */
 .coupon-card {
@@ -409,11 +599,11 @@
 }
 
 .detail-delivery-addr {
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .detail-delivery-note {
-  font-size: 14px;
+  font-size: 15px;
   /* color: var(--text-secondary); */
 }
 
@@ -478,11 +668,11 @@
 }
 .detail-delivery-toggle:active { background: var(--bg-gray); }
 .detail-delivery-label {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--text-primary);
   flex-shrink: 0;
-  width: 60px;
+  width: 62px;
 }
 .detail-delivery-summary {
   flex: 1;
@@ -491,7 +681,7 @@
   gap: 6px;
 }
 .detail-delivery-type-text {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-primary);
 }
 .delivery-toggle-icon {
@@ -517,14 +707,14 @@
 }
 .detail-delivery-toggle--sub:active { opacity: 0.7; }
 .detail-delivery-sub-label {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--text-primary);
   flex-shrink: 0;
   width: 44px;
 }
 .detail-delivery-sub-text {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-primary);
 }
 
@@ -564,62 +754,6 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== LIST 배송비 토글 (T6 조건) ===== */
-
-/* 1단계 토글 버튼 */
-.product-row__shipping-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 15px;
-  /* color: var(--text-secondary); */
-  cursor: pointer;
-  user-select: none;
-  padding: 2px 0;
-}
-.product-row__shipping-toggle:active { opacity: 0.7; }
-
-/* 1단계 inner: 기본 숨김, detail의 delivery-inner와 동일한 들여쓰기 */
-.product-row__shipping-detail {
-  display: none;
-  padding-left: 16px;
-  margin-top: 4px;
-  animation: slideDown 0.2s ease;
-}
-
-/* 2단계 서브 토글 버튼 */
-.product-row__shipping-toggle--sub {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 15px;
-  /* color: var(--text-secondary); */
-  cursor: pointer;
-  user-select: none;
-  padding: 2px 0;
-}
-.product-row__shipping-toggle--sub:active { opacity: 0.7; }
-
-/* 강도3 내용확인하기 버튼 */
-.product-row__shipping-btn {
-  height: 30px;
-  font-size: 12px;
-  padding: 0 12px;
-  border: 1.5px solid var(--primary);
-  border-radius: var(--radius-full);
-  color: var(--primary);
-  background: transparent;
-  cursor: pointer;
-  margin-top: 4px;
-}
-.product-row__shipping-btn:active { opacity: 0.7; }
-
-/* 강도3 최종 내용 */
-.product-row__shipping-final {
-  display: none;
-  margin-top: 4px;
-  animation: slideDown 0.2s ease;
-}
 
 /* 장바구니 삭제 버튼 */
 .cart-item__delete {
@@ -1225,12 +1359,12 @@
 }
 
 .detail-coupon-label {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
 }
 
 .detail-coupon-btn {
-  font-size: 14px;
+  font-size: 15px;
   /* color: var(--accent); */
   /* font-weight: 600; */
 }
