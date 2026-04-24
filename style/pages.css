@@ -266,12 +266,14 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.product-row__capacity { font-size: 12px; color: var(--text-muted); }
+.product-row__capacity { font-size: 14px; }
 .product-row__price-row { display: flex; align-items: baseline; gap: 5px; margin-top: 4px; }
-.product-row__discount { font-size: 15px; font-weight: 800; color: var(--primary); }
-.product-row__price { font-size: 16px; font-weight: 800; color: var(--text-primary); }
-.product-row__original { font-size: 11px; color: var(--text-muted); text-decoration: line-through; }
-.product-row__per-unit { font-size: 13px; }
+.product-row__price { font-size: 16px; font-weight: 800; color: var(--text-primary); display: flex; flex-direction: column; gap: 1px; }
+.product-row__price-original { font-size: 13px; color: var(--text-muted); text-decoration: line-through; margin-bottom: 2px; }
+.product-row__price-discounted { display: flex; align-items: baseline; gap: 4px; }
+.product-row__price-rate { font-size: 13px; font-weight: 800; color: var(--primary); }
+.product-row__price-amount { font-size: 16px; font-weight: 800; color: var(--text-primary); }
+.product-row__per-unit { font-size: 15px; font-weight: 400; }
 .product-row__shipping {
   display: inline-flex;
   align-items: center;
